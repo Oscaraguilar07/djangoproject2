@@ -66,27 +66,3 @@ def registro_views(request):
     })
 
 
-def mostrar_productos(request):
-
-    conexion = MySQLdb.connect(
-        host='localhost',
-        user='root',
-        password='',
-        db='tienda_virtual'
-    )
-
-
-    cursor = conexion.cursor()
-
-
-    cursor.execute('SELECT * FROM productos')
-
-
-    productos = cursor.fetchall()
-
-    # Cierra la conexión
-    cursor.close()
-    conexion.close()
-
-
-    return render(request, 'index.html', {'productos': productos})
