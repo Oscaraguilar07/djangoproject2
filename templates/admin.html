@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        #sidebar {
+            height: 100%;
+            width: 80px;
+            position: fixed;
+            background-color: #007bff;
+            color: #fff;
+            overflow-y: auto;
+            transition: width 0.3s ease;
+        }
+        #sidebar:hover {
+            width: 250px;
+        }
+        #sidebar a {
+            color: #fff;
+        }
+        #sidebar a:hover {
+            background-color: #0056b3;
+        }
+        #content {
+            margin-left: 80px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+        #sidebar:hover + #content {
+            margin-left: 250px;
+        }
+        .nav-link i {
+            margin-right: 10px;
+        }
+        .nav-link.active {
+            background-color: #0056b3;
+        }
+        h2 {
+            color: #007bff;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        #decorative-title {
+            font-family: 'Cursive', sans-serif;
+            font-size: 36px;
+            color: #007bff;
+            margin: 20px 0;
+            letter-spacing: 2px;
+        }
+        .widget {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div id="sidebar">
+    <h2 id="decorative-title">Admin Panel</h2>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">
+                <i class="fas fa-tachometer-alt"></i> Resumen
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-users"></i> Usuarios
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-box"></i> Productos
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div id="content">
+    <h2>Bienvenido al Panel de Administración</h2>
+    
+   
+    <div class="widget">
+        <h3>Usuarios</h3>
+        <p>Gestiona y revisa la información de los usuarios registrados.</p>
+    </div>
+
+    <div class="widget">
+        <h3>Productos</h3>
+        <p>Agrega, edita o elimina productos de tu tienda.</p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

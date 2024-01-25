@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Usuarios - Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        #sidebar {
+            height: 100%;
+            width: 80px;
+            position: fixed;
+            background-color: #007bff;
+            color: #fff;
+            overflow-y: auto;
+            transition: width 0.3s ease;
+            z-index: 1;
+        }
+
+        #sidebar:hover {
+            width: 250px;
+        }
+
+        #sidebar a {
+            padding: 15px 10px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        #sidebar a:hover {
+            background-color: #0056b3;
+        }
+
+        #content {
+            margin-left: 80px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        #sidebar:hover + #content {
+            margin-left: 250px;
+        }
+
+        h2 {
+            color: #007bff;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .user-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .user-card h3 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .user-card p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .nav-link i {
+            margin-right: 10px;
+        }
+
+        #decorative-title {
+            font-family: 'Cursive', sans-serif;
+            font-size: 36px;
+            color: #007bff;
+            margin: 20px 0;
+            letter-spacing: 2px;
+        }
+
+        .widget {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div id="sidebar">
+    <h2>Admin Panel</h2>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">
+                <i class="fas fa-tachometer-alt"></i> Resumen
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-users"></i> Usuarios
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-box"></i> Productos
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div id="content">
+    <h2>Usuarios</h2>
+    
+    <div class="user-card">
+        <img src="imagen-usuario-1.jpg" alt="Usuario 1">
+        <h3>Nombre Usuario 1</h3>
+        <p>Correo: usuario1@example.com</p>
+        <p>Rol: Administrador</p>
+    </div>
+
+    <div class="user-card">
+        <img src="imagen-usuario-2.jpg" alt="Usuario 2">
+        <h3>Nombre Usuario 2</h3>
+        <p>Correo: usuario2@example.com</p>
+        <p>Rol: Usuario Estándar</p>
+    </div>
+
+
+</div>
+
+</body>
+</html>
