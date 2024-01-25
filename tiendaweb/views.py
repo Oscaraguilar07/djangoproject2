@@ -1,12 +1,18 @@
-from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.shortcuts import render
+from django.shortcuts import redirect
+from django.contrib.auth import login
+from django.contrib.auth import logout
+from django.contrib.auth.models import User
+from .forms import RegisterForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
+from django.shortcuts import redirect
 from django.contrib import messages
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import UserCreationForm
-from .forms import RegistroForm
-from django.views import View
-import MySQLdb
+from django.views.decorators.csrf import csrf_protect
+
+
 
 
 def index (request):
@@ -14,39 +20,50 @@ def index (request):
     
     })
 
-def login_views(request):
+@csrf_protect
+def login_view(request):
     if request.method == 'POST':
-        usuario = request.POST.get('usuario')
-        contraseña = request.POST.get('contraseña')
-
-        user = authenticate(username=usuario, password=contraseña)
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
         if user:
             login(request, user)
             messages.success(request, 'Bienvenido {}'.format(user.username))
             return redirect('index')
-        else:
-            messages.error(request, 'Usuario o contraseña no válido')
+        else: 
+            messages.error(request, 'Usuario o contraseña incorrectos')
+    return render(request, 'Login.html',{
 
-    return render(request, 'login.html', {
-        
     })
     
+@login_required    
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'Sesión finalizada')
+    return redirect('login')
+    
+@csrf_protect    
 def registro_views(request):
-    if request.method == 'POST':
-        form = RegistroForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            # Autenticar al usuario después del registro
+    form = RegisterForm(request.POST or None)
+    
+    if request.method == 'POST' and form.is_valid():
+        username = form.cleaned_data.get('username')
+        email = form.cleaned_data.get('email')
+        password = form.cleaned_data.get('password')
+        
+        user = User.objects.create_user(username, email, password)
+        if user:
             login(request, user)
-            messages.success(request, '¡Registro exitoso! Bienvenido {}'.format(user.username))
+            messages.success(request, 'usuario creado exitosamente')
             return redirect('index')
-        else:
-            messages.error(request, 'Error en el formulario. Por favor, corrige los errores.')
-    else:
-        form = RegistroForm()
-
-    return render(request, 'registro.html', {'form': form})
-
+            
+        print(username)
+        print(email)
+        print(password)
+    
+    return render(request, 'Registro.html',{
+        'form': form
+    })
 
 
 def mostrar_productos(request):
