@@ -12,6 +12,20 @@ from django.contrib import messages
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 
+# views.py
+# views.py
+from django.shortcuts import render
+from .models import Producto
+
+def index(request):
+    print("Renderizando la vista index")
+    productos = Producto.objects.all()
+    return render(request, 'index.html', {'productos': productos})
+
+
+
+
+
 
 
 
@@ -64,5 +78,9 @@ def registro_views(request):
     return render(request, 'Registro.html',{
         'form': form
     })
+
+def index(request):
+    return render (request,"index.html")
+
 
 
