@@ -121,39 +121,8 @@
     </ul-->
 
     <!-- templates/tu_app/productos_data.html -->
-{% extends 'base.html' %}
 
-{% block content %}
-    <h2>Tabla de Productos</h2>
-    <table id="productos-table" class="display">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Precio</th>
-                <th>Categoría</th>
-                <th>Stock</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
 
-    <script>
-        $(document).ready(function() {
-            $('#productos-table').DataTable({
-                "ajax": "{% url 'productos_data' %}",
-                "columns": [
-                    {"data": "nombre"},
-                    {"data": "descripcion"},
-                    {"data": "precio"},
-                    {"data": "categoria__nombre"},
-                    {"data": "stock"},
-                ]
-            });
-        });
-    </script>
-{% endblock %}
 
 
     
