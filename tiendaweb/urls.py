@@ -11,6 +11,7 @@ urlpatterns = [
 ]
 
 
+
 urlpatterns = [
     path('', index, name='index'),
     path('login/', login_view, name='login'),

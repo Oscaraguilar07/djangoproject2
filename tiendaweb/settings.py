@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+import sys
+print(sys.path)
 
 from pathlib import Path
 from . import tienda_virtual as tienda_virtual
@@ -80,6 +82,20 @@ WSGI_APPLICATION = 'tiendaweb.wsgi.application'
 
 
 DATABASES = tienda_virtual.MYSQL
+
+MYSQL = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'tienda_virtual',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        },  
+    }
+}
 
 
 
